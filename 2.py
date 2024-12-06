@@ -29,17 +29,17 @@ def isthissafe(x: list) -> list:
 unsafelist = isthissafe(lines)
 print(f"part 1: {len(lines) - len(unsafelist)}")
 #############
-for i in unsafelist:
-    level = list(map(int, i.split(" ")))
+unsafelist_new = unsafelist.copy()
+for row in unsafelist:
+    level = list(map(int, row.split(" ")))
     for n, _ in enumerate(level):
-        templevel = level[:]
-        templevel.pop(n)
-        templevel = str(templevel)[:-1][1:].replace(",", "")
-        if not isthissafe([templevel]):
-            unsafelist.remove(i)
+        level_ = level.copy()
+        level_.pop(n)
+        if not isthissafe([" ".join(map(str, level_))]):
+            unsafelist_new.remove(row)
             break
     else:
         continue
 
 # answer is between 391 - 667
-print(f"part 2: {len(lines) - len(unsafelist)}")
+print(f"part 2: {len(lines) - len(unsafelist_new)}")
