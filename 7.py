@@ -6,6 +6,8 @@ def evaluate_left_to_right(nums, ops):
     for i, op in enumerate(ops):
         if op == "+":
             val = val + nums[i + 1]
+        elif op == "||":
+            val = int(f"{val}" + f"{nums[i + 1]}")
         else:
             val = val * nums[i + 1]
     return val
@@ -27,10 +29,10 @@ for line in lines:
         continue
 
     found = False
-    for ops in product(["+", "*"], repeat=len(numbers) - 1):
+    for ops in product(["+", "*", "||"], repeat=len(numbers) - 1):
         if evaluate_left_to_right(numbers, ops) == test_val:
             correct.append(test_val)
             found = True
             break
 
-print(sum(correct))
+print(f"part 2: {sum(correct)}") # for part 1 remove "||" above
