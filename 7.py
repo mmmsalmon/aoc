@@ -14,7 +14,7 @@ def evaluate_left_to_right(nums, ops):
 
 
 with open("input/7", "r") as f:
-    lines = f.read().strip().splitlines()
+    lines = f.read().splitlines()
 
 correct = []
 for line in lines:
