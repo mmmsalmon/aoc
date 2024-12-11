@@ -1,5 +1,5 @@
 from time import time
-from math import log10, ceil
+from math import log10
 
 with open("input/11", "r") as f:
     line = list(map(int, f.read().split(" ")))
